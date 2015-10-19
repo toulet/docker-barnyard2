@@ -1,0 +1,7 @@
+config reference_file:      /etc/suricata/reference.config
+config classification_file: /etc/suricata/classification.config
+config gen_file:            /etc/suricata/rules/gen-msg.map
+config sid_file:            /etc/suricata/rules/sid-msg.map
+input unified2
+output alert_fast: stdout
+output database: log, mysql, user={DB_USER} password={DB_PASS} dbname={DB_NAME} host={DB_HOST} port={DB_PORT} sensor_name={SENSOR_NAME}
