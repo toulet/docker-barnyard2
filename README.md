@@ -1,10 +1,9 @@
 # Docker Barnyard2
 ## About
 
-'''By:''' Cyrille TOULET <cyrille.toulet@linux.com>
+A docker Barnyard2 image based on CentOS 7 docker image.
 
-This docker image is based on CentOS7 docker image and launch a barnyard2 daemon.
-
+Cyrille TOULET <cyrille.toulet@linux.com>
 
 
 ## Configuration
@@ -16,17 +15,17 @@ chcon -Rt svirt_sandbox_file_t /etc/suricata
 ```
 
 Environment variables to set:
- - '''DB_HOST''': The MariaDB host
- - '''DB_PORT''': The MariaDB port (defaults 3306)
- - '''DB_NAME''': The MariaDB database name
- - '''DB_USER''': The MariaDB user
- - '''DB_PASS''': The MariaDB password
- - '''SENSOR_NAME''': The sensor name in database (defaults "Networking")
+ - **DB_HOST**: The MariaDB host
+ - **DB_PORT**: The MariaDB port (defaults 3306)
+ - **DB_NAME** The MariaDB database name
+ - **DB_USER**: The MariaDB user
+ - **DB_PASS**: The MariaDB password
+ - **SENSOR_NAME**: The sensor name in database (defaults "Networking")
 
 
 Don't forget to link the following volumes:
- - '''/etc/suricata''': The suricata configuration file
- - '''/var/log/suricata''': The unified2 log directory
+ - **/etc/suricata**: The suricata configuration file
+ - **/var/log/suricata**: The unified2 log directory
 
 
 
