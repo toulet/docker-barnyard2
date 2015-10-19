@@ -45,7 +45,6 @@ docker run \
        -d \
        --name snorby-barnyard2 \
        toulet/docker-barnyard2 \
-       /bin/bash
 ```
 
 
@@ -56,3 +55,48 @@ If you need to build image, run:
 ```bash
 docker build -t toulet/docker-barnyard2 .
 ```
+
+
+
+## Example
+
+Assuming Suricata is installed and configured on your system
+we will launch an instance of MariaDB, and Snorby of Barnyard2.
+
+
+```bash
+MY_IP="192.168.0.1"
+PASSWORD=$(openssl rand -base64 12)
+
+echo "The database password for user 'ids' is '$PASSWORD'!"
+
+docker run \
+       --env="MARIADB_USER=ids" \
+       --env="MARIADB_PASS=$PASSWORD" \
+       -d  \
+       -p 3306:3306 \
+       --name ids-mariadb \
+       million12/mariadb
+
+docker run \
+       --env="DB_ADDRESS=$MY_IP" \
+       --env="DB_USER=ids" \
+       --env="DB_PASS=$PASSWORD" \
+       -d \
+       --name ids-snorby \
+       polinux/snorby
+
+docker run \
+       --env DB_HOST="$MY_IP" \
+       --env DB_NAME="snorby" \
+       --env DB_USER="ids" \
+       --env DB_PASS="$PASSWORD" \
+       --env SENSOR_NAME="IDS" \
+       -v /etc/suricata:/etc/suricata \
+       -v /var/log/suricata:/var/log/suricata \
+       -d \
+       --name ids-barnyard2 \
+       toulet/docker-barnyard2
+```
+
+Now, visit your server website ;~)
