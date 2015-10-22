@@ -67,7 +67,7 @@ we will launch an instance of MariaDB, and Snorby of Barnyard2.
 MY_IP="192.168.0.1"
 PASSWORD=$(openssl rand -base64 12)
 
-echo "The database password for user 'ids' is '$PASSWORD'!"
+echo "The database password for user 'ids' is '$PASSWORD'"
 
 docker run \
        --env="MARIADB_USER=ids" \
