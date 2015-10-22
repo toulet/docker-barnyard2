@@ -82,6 +82,7 @@ docker run \
        --env="DB_USER=ids" \
        --env="DB_PASS=$PASSWORD" \
        -d \
+       -p 80:3000
        --name ids-snorby \
        polinux/snorby
 
