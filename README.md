@@ -100,3 +100,5 @@ docker run \
 ```
 
 Now, visit your server website ;~)
+
+The default user to change in administration dashboard is **snorby@snorby.org** with password **snorby**.
